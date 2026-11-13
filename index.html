@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102d34">
+  <meta name="description" content="လောကီအဆောင် ဆိုင်အတွက် Online အရောင်း၊ Stock၊ Customer၊ ဘောက်ချာ စနစ်">
+<style>
+:root{--navy:#102d34;--navy2:#1a4647;--teal:#087e72;--teal2:#09645c;--mint:#e8f5ef;--gold:#daac61;--goldlight:#f8edd9;--ink:#17323a;--muted:#6e8288;--line:#e1e9e9;--bg:#f5f7f6;--white:#fff;--red:#ba4350;--shadow:0 11px 28px rgba(16,45,52,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.75 "Noto Sans Myanmar","Myanmar Text",system-ui,-apple-system,sans-serif}h1,h2,h3,p{margin-top:0}h1{font-size:31px;line-height:1.5}h2{font-size:23px;line-height:1.6;margin-bottom:5px}h3{font-size:16px;line-height:1.6;margin-bottom:8px}.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:10px}.hidden{display:none!important}.text-right{text-align:right}.bold{font-weight:800}button,input,select,textarea{font:inherit}button{cursor:pointer}input,select,textarea{min-height:46px;width:100%;border:1px solid #d0dedf;background:#fff;border-radius:11px;padding:10px 13px;color:var(--ink);outline:none}textarea{resize:vertical;min-height:85px}input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #bfe7df}input[type=checkbox]{min-height:auto;width:auto;accent-color:var(--teal)}input[readonly]{background:#f1f5f5;color:#60747b}label{font-size:12px;font-weight:750;color:#3b5960;display:block}label input,label select,label textarea{display:block;margin-top:6px;font-size:14px;font-weight:450}.btn{min-height:44px;border:1px solid #d5e1e1;background:#fff;color:#315159;border-radius:11px;font-weight:750;padding:10px 14px;display:inline-flex;justify-content:center;align-items:center;gap:7px;text-decoration:none}.btn.primary{color:#fff;background:var(--teal);border-color:var(--teal)}.btn.primary:hover{background:var(--teal2)}.btn.secondary{background:var(--mint);color:var(--teal2);border-color:#c8e6dd}.btn.gold{background:var(--goldlight);color:#7f5d24;border-color:#f0ddbd}.btn.danger{color:var(--red);background:#fff1f2;border-color:#f5d4d8}.btn.small{min-height:35px;padding:6px 10px;font-size:12px}.btn:disabled{opacity:.6;cursor:not-allowed}.btn.block{width:100%}.icon-button{width:40px;height:40px;border:none;background:#f1f5f5;border-radius:10px;font-size:20px;color:var(--navy);display:grid;place-items:center;flex:0 0 auto}.link-button{background:transparent;border:0;color:var(--teal);text-decoration:underline;font-weight:700;padding:7px 0}.eyebrow,.section-kicker{font:800 11px/1.5 system-ui;letter-spacing:2px;color:var(--teal);text-transform:uppercase}.eyebrow.light{color:#e7c080}.loading-screen{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#eaf3f0;text-align:center}.loading-screen p{color:var(--muted)}.brand-icon{display:grid;place-items:center;width:45px;height:45px;border-radius:14px;background:var(--goldlight);color:#946625;font-size:30px;line-height:1}.brand-icon.huge{width:75px;height:75px;border-radius:22px;font-size:47px;margin-bottom:26px}
+.login-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100dvh}.login-visual{padding:clamp(36px,8vw,110px);background:radial-gradient(circle at 80% 20%,#2f6961,transparent 44%),linear-gradient(140deg,#102d34,#164e4b);color:#fff;display:flex;flex-direction:column;justify-content:center}.login-visual h1{font-size:clamp(29px,3.5vw,54px);margin-bottom:8px}.login-visual p{color:#d4e4e0}.login-features{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}.login-features span{border:1px solid #78a5a044;background:#ffffff0d;border-radius:25px;padding:7px 13px;color:#d7f0eb;font-size:12px}.login-area{display:grid;place-items:center;padding:25px}.login-box{width:min(420px,100%);padding:30px;background:#fff;border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow)}.stack-form{display:grid;gap:17px;margin:25px 0 15px}.error-box,.note{padding:12px 13px;border:1px solid #f1cdd2;background:#fff1f3;color:#8f2d39;border-radius:10px;font-size:12px;margin:10px 0}.note{border-color:#ead9aa;background:#fffbeb;color:#786024}.help{font-size:11px;color:var(--muted);margin:13px 0 8px}
+.app-header{height:76px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.header-wrap{max-width:1480px;margin:auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 22px;gap:12px}.brand-box{display:flex;align-items:center;gap:12px;min-width:0}.shop-title{font-weight:850;font-size:18px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.shop-caption{letter-spacing:2px;color:#8fa2a2;font:700 9px/1.2 system-ui}.account-box{display:flex;align-items:center;gap:14px}.account-caption{font-size:12px;color:#627b81}.status-dot{font:700 11px system-ui;color:#198772;white-space:nowrap}.status-dot.offline{color:#c35c40}.app-shell{max-width:1480px;margin:auto;display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100dvh - 76px)}.side-nav{background:#fff;border-right:1px solid var(--line);padding:25px 12px;position:sticky;top:76px;height:calc(100dvh - 76px);display:flex;flex-direction:column}.side-label{color:#9bb0ae;letter-spacing:2px;font-size:10px;font-weight:800;padding:0 15px 18px}.nav-entry{display:flex;align-items:center;gap:13px;width:100%;border:0;background:transparent;color:#55747a;border-radius:12px;text-align:left;padding:12px 15px;font-weight:700;font-size:13px;margin-bottom:3px}.nav-entry.active{background:var(--mint);color:#0b776a}.nav-icon{font-size:19px;width:25px;text-align:center}.side-foot{margin-top:auto;border-top:1px solid var(--line);padding:17px 15px;color:#9aaeb0;font-size:11px}.side-foot span{color:var(--teal);font-weight:800}.main-content{min-width:0;padding:28px clamp(14px,3.2vw,42px) 60px}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:25px;flex-wrap:wrap}.page-head h1{font-size:26px;margin:3px 0 2px}.page-head p{font-size:13px;color:var(--muted);margin:0}.page-actions{display:flex;gap:8px;flex-wrap:wrap}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px;margin-bottom:20px;min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:17px;flex-wrap:wrap}.panel-head h3{margin:0}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;box-shadow:var(--shadow)}.stat .stat-icon{font-size:23px;margin-bottom:15px}.stat .stat-label{color:#70878c;font-size:12px;margin-bottom:5px}.stat .stat-value{font-size:24px;font-weight:850;line-height:1.4;overflow-wrap:anywhere}.stat.teal .stat-value{color:#08796a}.stat.gold .stat-value{color:#a17a38}.stat.red .stat-value{color:#b34f50}.split{display:grid;grid-template-columns:1.35fr 1fr;gap:17px}.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.quick{border:1px solid #dce8e6;background:#f6faf8;padding:18px;border-radius:14px;text-align:left;color:#124e49;font-weight:800}.quick .quick-symbol{display:block;font-size:26px;margin-bottom:6px}.tool-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}.search{max-width:360px;flex:1;min-width:190px}.table-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:13px}table{width:100%;border-collapse:collapse;min-width:600px;text-align:left}th{background:#f0f6f4;color:#658288;font-size:11px;letter-spacing:.15px;white-space:nowrap}td,th{padding:11px 13px;border-bottom:1px solid #eaf0ef;vertical-align:middle}td{font-size:12px}tbody tr:last-child td{border-bottom:0}td strong{font-weight:800}.tag{display:inline-flex;padding:4px 9px;border-radius:100px;background:#e6f6ee;color:#12755e;font-size:11px;font-weight:750;white-space:nowrap}.tag.warn{background:#fff0d9;color:#9c6e21}.tag.bad{background:#ffeaed;color:#9e4750}.tag.grey{background:#edf1f2;color:#637a81}.data-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.data-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.col-span-2{grid-column:span 2}.subheading{font-size:14px;color:#1b5050;margin:24px 0 13px;padding:0 0 9px;border-bottom:1px solid var(--line)}.items-head{display:grid;grid-template-columns:2.1fr 80px 1.1fr 1fr 38px;gap:9px;color:#7b9095;font-size:11px;font-weight:700;margin-bottom:10px}.sale-line{display:grid;grid-template-columns:2.1fr 80px 1.1fr 1fr 38px;gap:9px;align-items:center;margin-bottom:10px}.sale-line .line-total{font-weight:850;text-align:right;white-space:nowrap}.total-strip{display:grid;grid-template-columns:repeat(3,1fr);background:#eaf6f1;border:1px solid #c9e5db;padding:16px;border-radius:15px;gap:9px;margin:17px 0}.total-strip span{color:#668680;font-size:11px;display:block}.total-strip b{font-size:21px;display:block;color:#125d53}.total-strip .due b{color:#a66f28}.receipt-card{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;margin:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px 9px;align-items:center}.receipt-card .rv-no{font-size:15px;font-weight:850}.receipt-card .rv-m{color:var(--muted);font-size:11px}.receipt-card .rv-amount{font-size:18px;font-weight:850;text-align:right}.receipt-card .rv-buttons{grid-column:span 2;display:flex;gap:7px;flex-wrap:wrap;border-top:1px solid #edf1f1;padding-top:11px;margin-top:6px}.empty{padding:45px 15px;text-align:center;color:#8b9a9b;border-radius:12px;background:#fafcfc}.empty .empty-icon{font-size:31px;margin-bottom:8px}.notice{background:#fff9ed;border:1px solid #f2e2bc;padding:11px 14px;border-radius:11px;color:#815e28;font-size:12px;margin:12px 0}.success-note{background:#eaf6f0;border:1px solid #c9e8db;padding:11px 14px;border-radius:11px;color:#186c56;font-size:12px;margin:12px 0}.inline-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.field-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.mono{font-family:ui-monospace,SFMono-Regular,monospace}.bottom-nav{display:none}.modal-root{position:fixed;inset:0;z-index:100;display:flex;justify-content:center;align-items:center;padding:15px}.modal-backdrop{position:absolute;inset:0;background:#09272cb3}.modal-card{position:relative;background:#fff;border-radius:20px;max-width:720px;width:100%;max-height:92dvh;display:flex;flex-direction:column;box-shadow:0 25px 70px #001b2240}.modal-head{border-bottom:1px solid var(--line);padding:17px 20px;display:flex;align-items:center;justify-content:space-between}.modal-head h3{margin:0;font-size:18px}.modal-content{padding:20px;overflow-y:auto;overscroll-behavior:contain}.toast{position:fixed;z-index:200;bottom:26px;left:50%;transform:translateX(-50%);background:#14383d;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 12px 30px #0003;max-width:min(90vw,520px);font-size:12px;display:none}.signature-canvas{width:100%;height:170px;display:block;border:1px dashed #9eb9b5;border-radius:12px;touch-action:none;background:#fff}.sig-preview{max-height:60px;max-width:170px;object-fit:contain}.customer-note{background:#f6faf9;color:#5a7379;padding:11px;border-radius:9px;margin:10px 0}.receipt{font:12px/1.7 "Noto Sans Myanmar","Myanmar Text",sans-serif;color:#111;background:#fff;padding:12mm;max-width:830px;margin:auto}.receipt .receipt-header{text-align:center;border-bottom:2px double #333;padding-bottom:9px;margin-bottom:12px}.receipt h2{font-size:20px;color:#111;margin:0}.receipt .receipt-no{font-size:14px;font-weight:850;text-align:center;margin:12px 0}.receipt .rrow{display:flex;justify-content:space-between;gap:14px}.receipt .ritems{width:100%;min-width:0;margin-top:13px;border-collapse:collapse}.receipt .ritems td,.receipt .ritems th{border:1px solid #777;padding:6px;color:#111;background:#fff}.receipt .ritems th{background:#eee}.receipt .rsummary{margin:13px 0 0 auto;max-width:300px}.receipt .rsummary .rrow{border-bottom:1px dotted #aaa;padding:5px 0}.receipt .rsummary .rrow:last-child{border-top:1px solid #333;font-weight:900}.receipt .sign-row{display:flex;justify-content:space-around;gap:15px;text-align:center;margin-top:35px}.receipt .sign-row>div{width:45%}.receipt .sign-row img{max-height:60px;max-width:100%;display:block;margin:auto}.receipt .sign-line{border-top:1px solid #444;padding:6px}.receipt .thank{border-top:1px dashed #aaa;padding-top:9px;margin-top:20px;text-align:center;font-size:10px}#printRoot{display:none}.demo-banner{background:#fff3d6;color:#815b20;border:1px solid #eddda8;padding:11px 16px;border-radius:11px;margin-bottom:19px}.nowrap{white-space:nowrap}
+@media(max-width:1100px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}.main-content{padding-left:22px;padding-right:22px}}
+@media(max-width:760px){body{font-size:13px}.login-layout{display:block}.login-visual{min-height:255px;padding:25px 22px 24px}.login-visual h1{font-size:25px;margin:0}.login-visual .brand-icon{display:none}.login-features{margin-top:15px}.login-area{display:block;padding:0 13px 40px;margin-top:-19px;position:relative}.login-box{width:100%;max-width:440px;margin:auto;border-radius:18px;padding:23px}.app-header{height:68px}.header-wrap{padding:8px 13px}.shop-title{font-size:15px}.account-caption{display:none}.status-dot{font-size:10px}.app-shell{display:block;min-height:calc(100dvh - 68px)}.side-nav{display:none}.main-content{padding:19px 13px 100px}.bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;z-index:30;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e3eaea;padding:7px 4px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px #142f3411}.bottom-entry{border:0;background:transparent;color:#799096;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1px;min-height:45px;border-radius:9px;font-weight:700;font-size:10px}.bottom-entry.active{color:var(--teal);background:#e7f5ef}.bottom-entry .emoji{font-size:21px;line-height:1.2}.page-head h1{font-size:21px}.page-head{margin-bottom:15px}.panel{padding:15px;border-radius:14px;margin-bottom:14px}.stats{gap:9px;margin-bottom:14px}.stat{padding:14px;border-radius:14px}.stat .stat-icon{font-size:20px;margin-bottom:8px}.stat .stat-value{font-size:19px}.stat .stat-label{font-size:10px}.data-grid,.data-grid.three{grid-template-columns:1fr;gap:12px}.col-span-2{grid-column:auto}.items-head{display:none}.sale-line{grid-template-columns:1fr 80px;gap:7px;padding:11px;border:1px solid var(--line);border-radius:12px;margin-bottom:11px}.sale-line .line-product{grid-column:span 2}.sale-line .line-price{grid-column:1}.sale-line .line-total{grid-column:1;text-align:left}.sale-line .line-remove{grid-column:2;grid-row:3}.sale-line input,.sale-line select{min-height:43px}.total-strip{padding:10px;gap:5px}.total-strip b{font-size:16px}.total-strip span{font-size:10px}.receipt-card{padding:13px}.receipt-card .rv-no{font-size:13px}.receipt-card .rv-amount{font-size:16px}.modal-root{padding:0;align-items:flex-end}.modal-card{width:100%;max-width:none;max-height:96dvh;border-radius:20px 20px 0 0}.modal-content{padding:17px}.modal-head{padding:15px 17px}.toast{bottom:90px}}
+@media(max-width:380px){.shop-caption{display:none}.shop-title{font-size:13px}.brand-box{gap:8px}.brand-icon{height:40px;width:40px}.stats{grid-template-columns:repeat(2,1fr)}.stat .stat-value{font-size:16px}.receipt-card{grid-template-columns:1fr}.receipt-card .rv-amount{text-align:left}.receipt-card .rv-buttons{grid-column:1}}
+@media print{@page{size:A5 portrait;margin:0}html,body{background:#fff!important;margin:0;padding:0;color:#000!important}.app-header,.app-shell,.bottom-nav,.modal-root,.toast,.login-layout,.loading-screen{display:none!important}#printRoot{display:block!important}.receipt{padding:12mm 10mm;max-width:none;width:100%;box-shadow:none}.receipt .ritems{page-break-inside:auto}.receipt .ritems tr{page-break-inside:avoid}.receipt .sign-row{break-inside:avoid}body.print-80 .receipt{width:80mm;padding:4mm 3mm;font-size:10px}body.print-58 .receipt{width:58mm;padding:3mm 2mm;font-size:9px}body.print-80 .receipt h2,body.print-58 .receipt h2{font-size:13px}body.print-80 .receipt .ritems,body.print-58 .receipt .ritems{font-size:8px}body.print-80 .receipt .ritems td,body.print-58 .receipt .ritems td,body.print-80 .receipt .ritems th,body.print-58 .receipt .ritems th{padding:2px}body.print-80 .receipt .sign-row,body.print-58 .receipt .sign-row{margin-top:22px}body.print-58 .receipt .rsummary,body.print-80 .receipt .rsummary{max-width:none}body.print-58 .receipt .sign-row img,body.print-80 .receipt .sign-row img{max-height:30px}}
+/* V2 — premium mobile-first visual design. */
+:root{--navy:#102d34;--teal:#087e72;--gold:#d9ab62;--bg:#f1f6f3;--shadow:0 16px 42px rgba(15,58,57,.075)}
+body{background:radial-gradient(ellipse at 100% 0%,#e2f1ea,transparent 520px),#f3f7f5}
+.app-header{background:#fff;box-shadow:0 3px 18px #113a3610}
+.brand-icon{box-shadow:inset 0 0 0 1px #dfc69580}
+.page-head h1{letter-spacing:-.25px}
+.stat{border:1px solid #e2ede9;box-shadow:0 9px 28px #183a3410;transition:transform .2s ease}
+.stat:active,.quick:active{transform:scale(.99)}
+.panel{box-shadow:0 10px 35px #1b443a0a;border-color:#e0ebe7}
+.btn{transition:background-color .15s, box-shadow .15s, transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:linear-gradient(110deg,#058a75,#076a66);border-color:#058676;box-shadow:0 7px 17px #00857418}
+.btn.gallery-btn{background:linear-gradient(120deg,#d7aa61,#edd2a1);color:#47331d;border:1px solid #d6ad70;font-weight:850;box-shadow:0 6px 16px #d6a85c2c}
+.btn.gallery-btn:hover{background:linear-gradient(120deg,#e5b66b,#f5dfb8)}
+.quick{background:linear-gradient(160deg,#f2fbf6,#fff);box-shadow:0 6px 18px #0d6b5411;transition:transform .2s}
+.receipt-card{box-shadow:0 4px 16px #08382f0a}
+.section-kicker{letter-spacing:2.3px}
+.modal-card{box-shadow:0 20px 70px #04252247}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px #acdccc80}
+@media(max-width:760px){
+ .main-content{padding-bottom:calc(102px + env(safe-area-inset-bottom))}
+ .bottom-nav{background:#fffffff7;backdrop-filter:blur(16px);box-shadow:0 -9px 30px #14342b13}
+ .bottom-entry.active{background:linear-gradient(150deg,#d8efe3,#ecf8f1);color:#006d5d}
+ .page-head{border-radius:17px}
+ .receipt-card .rv-buttons .btn.gallery-btn{flex:1}
+ .modal-content .inline-actions .btn.gallery-btn{width:100%;order:-1;min-height:53px}
+ .stats .stat{min-height:119px}
+}
+
+</style>
+  <title>လောကီအဆောင် • Online Sales</title>
+</head>
+<body>
+  <div id="loadingView" class="loading-screen"><div class="brand-icon huge">✺</div><h2>လောကီအဆောင်</h2><p>Online အရောင်းစနစ် စတင်နေသည်…</p></div>
+  <div id="loginView" class="login-layout hidden">
+    <div class="login-visual"><span class="eyebrow light">LAWKĪ · CLOUD POS</span><div class="brand-icon huge">✺</div><h1>လောကီအဆောင်<br>အရောင်းစနစ်</h1><p>ဆိုင်တစ်ဆိုင် • ဖုန်းအများကြီး • အချက်အလက်တစ်ခုတည်း</p><div class="login-features"><span>✓ Online Stock</span><span>✓ Voucher Print</span><span>✓ Admin / Staff</span></div></div>
+    <div class="login-area"><div class="login-box"><div class="section-kicker">SECURE LOGIN</div><h2>အကောင့်ဝင်ရန်</h2><p class="muted">Admin သို့မဟုတ် ဝန်ထမ်း Email / Password ဖြင့်ဝင်ပါ။</p>
+      <form id="loginForm" class="stack-form">
+        <label>Email <input name="email" type="email" required placeholder="owner@example.com" autocomplete="username"></label>
+        <label>Password <input name="password" type="password" required placeholder="••••••••••" autocomplete="current-password"></label>
+        <button class="btn primary block" type="submit">အကောင့်ဝင်မည် <span>→</span></button>
+      </form><div id="loginError" class="error-box hidden"></div>
+      <p class="help">Admin အကောင့်ကို Supabase Dashboard မှ စတင်ဖွင့်ရန် README ကို ကြည့်ပါ။</p>
+      <button type="button" class="link-button" data-action="demo">App နမူနာပုံစံကို ကြည့်ရန်</button>
+      <div id="configHint" class="note hidden">Supabase ချိတ်ဆက်မှု မသတ်မှတ်ရသေးပါ။ GitHub ရှိ <b>index.html</b> ၏ SUPABASE_URL နှင့် SUPABASE_PUBLISHABLE_KEY ကို ဖြည့်ပါ။</div>
+    </div></div>
+  </div>
+  <div id="appView" class="hidden">
+    <header class="app-header"><div class="header-wrap"><div class="brand-box"><div class="brand-icon">✺</div><div><div id="shopTitle" class="shop-title">လောကီအဆောင်</div><div class="shop-caption">CLOUD SALES MANAGER</div></div></div>
+      <div class="account-box"><div id="syncStatus" class="status-dot">● Online</div><div class="account-caption" id="accountName"></div><button class="icon-button" data-action="logout" aria-label="Logout" title="အကောင့်ထွက်ရန်">⇥</button></div></div></header>
+    <div class="app-shell">
+      <aside class="side-nav" aria-label="App navigation"><div class="side-label">MENU</div><div id="sideNav"></div><div class="side-foot">လောကီအဆောင် · Online<br><span id="sideRole">Staff</span></div></aside>
+      <main id="mainContent" class="main-content" tabindex="-1"></main>
+    </div>
+    <nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation"></nav>
+  </div>
+  <div id="modalRoot" class="modal-root hidden" role="presentation"><div class="modal-backdrop" data-action="close-modal"></div><div class="modal-card" role="dialog" aria-modal="true"><div class="modal-head"><h3 id="modalTitle"></h3><button class="icon-button close" type="button" data-action="close-modal" aria-label="ပိတ်ရန်">✕</button></div><div id="modalContent" class="modal-content"></div></div></div>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="printRoot"></div>
+<script>
+// Public browser config only. PASTE PROJECT URL + PUBLISHABLE (or legacy ANON) KEY.
+// NEVER paste secret keys, service_role keys or database passwords here.
+// EDIT THESE TWO PUBLIC VALUES IN GITHUB (never use sb_secret_ or service_role):
+window.LAWKI_CONFIG = {
+  SUPABASE_URL: 'PASTE_YOUR_SUPABASE_PROJECT_URL',
+  SUPABASE_PUBLISHABLE_KEY: 'PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY'
+};
+
+</script>
+<script type="module">
+/* Locally generates a sharp PNG voucher; customer data is never sent to an image service. */
+const C = { bg:'#edf3ef', paper:'#ffffff', navy:'#102e36', navy2:'#22504d', green:'#087e72', pale:'#eaf6f1', gold:'#e5ba73', ink:'#17333c', muted:'#687d81', line:'#e0e9e7', warning:'#a26a30' };
+const MMK = n => (Number(n)||0).toLocaleString('en-US',{maximumFractionDigits:0}) + ' Ks';
+const txt = v => String(v??'').trim();
+const fontFamily = '"Noto Sans Myanmar", "Myanmar Text", "Padauk", sans-serif';
+const graphemes = s => {
+  if(typeof Intl?.Segmenter === 'function') return [...new Intl.Segmenter('my',{granularity:'grapheme'}).segment(s)].map(x=>x.segment);
+  return [...s];
+};
+function wrap(ctx, message, maxWidth) {
+  const output=[];
+  for(const paragraph of txt(message).split('\n')) {
+    if(!paragraph){output.push('');continue;}
+    let current='';
+    // Grapheme boundaries are important for the Myanmar combining vowel signs.
+    for(const g of graphemes(paragraph)){
+      if(current && ctx.measureText(current+g).width > maxWidth){output.push(current);current=g;}
+      else current+=g;
+    }
+    if(current)output.push(current);
+  }
+  return output.length ? output : ['—'];
+}
+function rounded(ctx,x,y,w,h,r=22){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
+function imageLoad(source){return new Promise(resolve=>{
+  if(!/^data:image\/png;base64,/.test(source||''))return resolve(null);
+  const im = new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=source;
+});}
+async function makeVoucherPng({sale,customer,items,payments,settings}){
+  if(!sale)throw new Error('Voucher not found');
+  if(document.fonts?.ready)await document.fonts.ready;
+  const sign = await imageLoad(settings.signature);
+  const W = 1080, IN = 62, X = 102, RW = W-2*X;
+  const when = v => v ? new Date(v).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
+  const due = Number(sale.total)-Number(sale.paid);
+  function render(ctx, draw){
+    let y=0;
+    function box(x,yy,w,h,color,r=20){if(!draw)return;ctx.fillStyle=color;rounded(ctx,x,yy,w,h,r);ctx.fill();}
+    function stroke(x1,y1,x2,y2,color=C.line,width=2){if(!draw)return;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
+    function text(s,x,top,size=27,color=C.ink,weight=400,align='left'){
+      ctx.font=`${weight} ${size}px ${fontFamily}`;
+      if(draw){ctx.textBaseline='top';ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(txt(s)||'—',x,top);} return size;
+    }
+    function multi(s,x,top,maxWidth,{size=29,weight=400,color=C.ink,lh=size*1.7,align='left'}={}){
+      ctx.font=`${weight} ${size}px ${fontFamily}`;
+      const lines=wrap(ctx,s,maxWidth);
+      if(draw){ctx.textBaseline='top';ctx.fillStyle=color;ctx.textAlign=align;lines.forEach((line,i)=>ctx.fillText(line||' ',x,top+i*lh));}
+      return lines.length*lh;
+    }
+    // Dark branded header, on a clean printable/gallery friendly canvas.
+    box(IN,IN,W-2*IN,306,C.navy,29);
+    if(draw){
+      const g=ctx.createLinearGradient(IN,IN,IN+900,IN+300);g.addColorStop(0,C.navy);g.addColorStop(1,C.navy2);
+      ctx.save();rounded(ctx,IN,IN,W-2*IN,306,29);ctx.clip();ctx.fillStyle=g;ctx.fillRect(IN,IN,W-2*IN,306);
+      ctx.globalAlpha=.08;ctx.strokeStyle=C.gold;ctx.lineWidth=3;
+      for(let i=0;i<8;i++){ctx.beginPath();ctx.arc(900,40,110+i*35,0,Math.PI*2);ctx.stroke();}
+      ctx.restore();
+    }
+    box(X,104,83,83,C.gold,24);
+    text('✺',X+42,108,62,C.navy,700,'center');
+    text('LAWKĪ  •  CLOUD POS',X+111,110,21,C.gold,700);
+    let brandH=multi(settings.shop_name||'လောကီအဆောင် အရောင်းဆိုင်',X+111,155,690,{size:39,weight:800,color:'#ffffff',lh:55});
+    let infoTop=Math.max(216,160+brandH);
+    multi([settings.shop_phone,settings.shop_address].filter(Boolean).join('   •   ')||'OFFICIAL SALES RECEIPT',X+111,Math.min(infoTop,277),690,{size:22,color:'#d4e7e0',lh:31});
+    y=413;
+    text('အရောင်းဘောက်ချာ  /  SALES RECEIPT',X,y,26,C.muted,700);y+=55;
+    text(sale.voucher_no,X,y,44,C.navy,800);
+    text(when(sale.created_at),W-X,y+12,23,C.muted,500,'right');y+=84;
+    if(sale.status==='void'){
+      box(X,y,RW,66,'#fce5e8',14);text('ပယ်ဖျက်ပြီး / VOID',X+20,y+13,29,'#a83f4d',800);y+=88;
+    }
+    stroke(X,y,W-X,y);y+=29;
+    // Buyer and wearer.
+    text('CUSTOMER & RECIPIENT',X,y,21,C.green,800);y+=44;
+    const customerData=[
+      ['Customer',customer.name||'—'],['ဖုန်း',customer.phone||'—'],
+      ['အဆောင်မှာသူ',customer.wearer_name||customer.name||'—'],
+      ['မွေးသက္ကရာဇ် / နေ့နံ',[customer.date_of_birth||'—',customer.weekday||'—'].join('  /  ')],
+      ['နေရပ်',[customer.country,customer.city,customer.township,customer.address].filter(Boolean).join(' / ')||'—']
+    ];
+    for(const [label,value] of customerData){
+      text(label,X,y,23,C.muted,600);y+=33;
+      const height=multi(value,X,y,RW,{size:29,weight:650,lh:49});y+=height+18;
+    }
+    y+=16;stroke(X,y,W-X,y);y+=35;
+    text('ပစ္စည်းအမည်  /  ITEMS',X,y,23,C.green,800);y+=55;
+    for(const [i,item] of (items||[]).entries()){
+      text(String(i+1).padStart(2,'0'),X,y+5,24,C.gold,800);
+      const titleHeight=multi(item.product_name||'ပစ္စည်း',X+55,y,RW-255,{size:30,weight:700,lh:49});
+      text(MMK(item.line_total),W-X,y+4,27,C.navy,800,'right');
+      const subTop=y+Math.max(55,titleHeight)+3;
+      text(`${item.quantity} ခု   ×   ${MMK(item.unit_price)}`,X+55,subTop,22,C.muted);
+      y=subTop+59;stroke(X,y,W-X,y);y+=27;
+    }
+    y+=20;
+    box(X,y,RW,213,C.pale,23);
+    text('စုစုပေါင်း',X+24,y+21,26,C.ink,650);text(MMK(sale.total),W-X-24,y+20,31,C.navy,800,'right');
+    stroke(X+24,y+71,W-X-24,y+71,'#cfe5dc');
+    text('ပေးသွင်းပြီး',X+24,y+87,25,C.ink);text(MMK(sale.paid),W-X-24,y+85,29,C.green,800,'right');
+    stroke(X+24,y+139,W-X-24,y+139,'#cfe5dc');
+    text('ကျန်ငွေ',X+24,y+149,25,C.ink,800);text(MMK(due),W-X-24,y+148,30,due>0?C.warning:C.green,800,'right');
+    y+=252;
+    if(payments?.length){
+      text('PAYMENT HISTORY',X,y,22,C.green,800);y+=48;
+      for(const p of payments){
+        text(p.method||'Cash',X,y,28,C.navy,750);
+        text(MMK(p.amount),W-X,y,27,C.navy,750,'right');y+=39;
+        const paynote=[when(p.created_at),p.reference].filter(Boolean).join('  •  ');
+        y+=multi(paynote,X,y,RW,{size:21,lh:33,color:C.muted})+24;
+      }
+    }
+    if(sale.note){
+      y+=12;text('မှတ်ချက် / NOTE',X,y,22,C.green,800);y+=38;
+      y+=multi(sale.note,X,y,RW,{size:24,lh:43})+22;
+    }
+    y+=13;stroke(X,y,W-X,y);y+=46;
+    text('OWNER SIGNATURE',X,y,22,C.muted,800);
+    text('CUSTOMER SIGNATURE',W-X,y,22,C.muted,800,'right');
+    y+=44;
+    if(draw && sign){
+      const k=Math.min(350/sign.naturalWidth,113/sign.naturalHeight);
+      ctx.drawImage(sign,X+18,y,sign.naturalWidth*k,sign.naturalHeight*k);
+    }
+    y+=125;
+    stroke(X,y,X+370,y,C.ink,2);stroke(W-X-370,y,W-X,y,C.ink,2);y+=18;
+    multi(settings.owner_name||'Owner',X,y,370,{size:22,weight:700,lh:40});y+=65;
+    y+=13;
+    box(X,y,RW,93,'#f5f9f7',15);
+    multi(settings.receipt_note||'ဝယ်ယူအားပေးမှုအတွက် ကျေးဇူးတင်ပါသည်။',W/2,y+20,RW-42,{size:22,lh:36,color:C.muted,align:'center'});
+    y+=137;
+    text('LAWKĪ  ·  PREMIUM RECEIPT',W/2,y,18,C.muted,750,'center');y+=49;
+    return Math.ceil(y + IN);
+  }
+  const measure=document.createElement('canvas');measure.width=W;measure.height=1;
+  const H=render(measure.getContext('2d'),false);
+  // A non-huge image stays reliable in Android Chrome and WhatsApp sharing.
+  if(H>12000)throw new Error('This voucher is too long to export as one image. Print it instead.');
+  const canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=C.paper;rounded(ctx,IN-20,IN-20,W-2*(IN-20),H-2*(IN-20),26);ctx.fill();
+  render(ctx,true);
+  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('PNG export failed')),'image/png'));
+  return {blob,filename:`LAWKĪ_${txt(sale.voucher_no).replace(/[^a-zA-Z0-9-]/g,'_')}.png`,width:W,height:H};
+}
+
+/* LAWKĪ Cloud POS — responsive PWA with secure Supabase RPC for every stock/finance mutation. */
+const $ = (id) => document.getElementById(id);
+const e = (v) => String(v ?? '').replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const fmt = (n) => new Intl.NumberFormat('en-US', {maximumFractionDigits:0}).format(Number(n)||0) + ' ကျပ်';
+const num = (v) => Number(String(v ?? '0').replace(/,/g,''));
+const validInt = (n, min=0) => Number.isSafeInteger(n) && n>=min;
+const dateTime = (s) => s ? new Date(s).toLocaleString('en-GB', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
+const dateOnly = (s) => s ? String(s).slice(0,10) : '';
+const METHODS = ['KPay','Wave','AYA','Cash','Bank'];
+const WEEKDAYS = ['တနင်္ဂနွေ','တနင်္လာ','အင်္ဂါ','ဗုဒ္ဓဟူး','ကြာသပတေး','သောကြာ','စနေ','ရာဟု (ဗုဒ္ဓဟူးညနေ)'];
+const PAPER = ['A4','A5','80mm','58mm'];
+const navItems = [
+  {id:'home',icon:'⌂',text:'ပင်မ'}, {id:'sell',icon:'＋',text:'အရောင်းအသစ်'},
+  {id:'products',icon:'◈',text:'ပစ္စည်း / Stock'}, {id:'vouchers',icon:'▤',text:'ဘောက်ချာ'},
+  {id:'customers',icon:'♙',text:'Customers'}, {id:'reports',icon:'▥',text:'စာရင်းချုပ်'},
+  {id:'locations',icon:'⌖',text:'မြို့ / မြို့နယ်'}, {id:'settings',icon:'⚙',text:'ဆိုင် Setting'},
+  {id:'staff',icon:'♧',text:'ဝန်ထမ်း'}, {id:'more',icon:'⋯',text:'အခြား'}
+];
+const defaultSettings = {shop_name:'လောကီအဆောင် အရောင်းဆိုင်',shop_phone:'',shop_address:'',owner_name:'',signature:'',paper_size:'A5',receipt_note:'ဝယ်ယူအားပေးမှုအတွက် ကျေးဇူးတင်ပါသည်။'};
+const app = {sb:null,profile:null,session:null,demo:false,route:'home',busy:false,refreshing:false,realtime:null,timer:null,
+  data:{products:[],customers:[],sales:[],sale_items:[],payments:[],locations:[],profiles:[],settings:{...defaultSettings}},
+  filter:{products:'',vouchers:'',customers:'',voucherStatus:'all'},saleDraft:null,signatureChanged:false};
+let toastTimer;
+function toast(msg, error=false) { const box=$('toast'); box.textContent=String(msg); box.style.display='block'; box.style.background=error?'#a73848':'#14383d'; clearTimeout(toastTimer); toastTimer=setTimeout(()=>box.style.display='none',4500); }
+function errorText(err) { const msg=err?.message||String(err||'Unknown error');
+  if (/insufficient stock/i.test(msg)) return 'ပစ္စည်းလက်ကျန် မလုံလောက်ပါ။ အခြားဖုန်းမှ ရောင်းထားနိုင်ပါတယ်။ Refresh လုပ်ပြီးပြန်စစ်ပါ။';
+  if (/duplicate key.*sku/i.test(msg)) return 'SKU တူပြီးသား ပစ္စည်းရှိပါသည်။';
+  if (/jwt|token|session/i.test(msg)) return 'Login သက်တမ်းကုန်နိုင်ပါသည်။ ပြန်ဝင်ကြည့်ပါ။';
+  return msg;
+}
+function empty(message, icon='◌') {return `<div class="empty"><div class="empty-icon">${icon}</div>${e(message)}</div>`;}
+function optionList(values, current) {return values.map(v=>`<option value="${e(v)}" ${String(v)===String(current)?'selected':''}>${e(v)}</option>`).join('');}
+function pageHead(kicker,title,desc,actions=''){return `<div class="page-head"><div><div class="section-kicker">${e(kicker)}</div><h1>${e(title)}</h1><p>${e(desc)}</p></div>${actions?`<div class="page-actions">${actions}</div>`:''}</div>`;}
+function roleAdmin(){return app.profile?.role==='admin';}
+function guardDemo(){if(app.demo){toast('နမူနာကြည့်ရှုမှုသာဖြစ်ပါတယ်။ အမှန်တကယ်သိမ်းရန် Supabase ချိတ်ဆက်ပါ။',true);return true;}return false;}
+function ensureWritable(){if(guardDemo())return false;if(!navigator.onLine){toast('Internet ချိတ်ဆက်မှု မရှိပါ။ Online သို့ ပြန်ရောက်မှ သိမ်းနိုင်မည်။',true);return false;}return true;}
+function totals(){const active=app.data.sales.filter(s=>s.status==='active');return {sales:active,amount:active.reduce((n,s)=>n+Number(s.total),0),paid:active.reduce((n,s)=>n+Number(s.paid),0),due:active.reduce((n,s)=>n+Number(s.total)-Number(s.paid),0)};}
+function saleItems(id){return app.data.sale_items.filter(i=>i.sale_id===id);}
+function payments(id){return app.data.payments.filter(p=>p.sale_id===id).sort((a,b)=>a.created_at.localeCompare(b.created_at));}
+function customerForSale(s){return s.customer_snapshot || app.data.customers.find(c=>c.id===s.customer_id) || {};}
+function renderShell(){
+  const navBtn=(n,isBottom=false)=>`<button class="${isBottom?'bottom-entry':'nav-entry'} ${app.route===n.id?'active':''}" data-route="${e(n.id)}"><span class="${isBottom?'emoji':'nav-icon'}">${n.icon}</span><span>${e(n.text)}</span></button>`;
+  $('sideNav').innerHTML=navItems.filter(n=>n.id!=='more'&&(n.id!=='staff'||roleAdmin())).map(n=>navBtn(n)).join('');
+  $('bottomNav').innerHTML=[...navItems.slice(0,4),navItems[9]].map(n=>navBtn(n,true)).join('');
+  $('shopTitle').textContent=app.data.settings.shop_name;
+  $('accountName').textContent=`${app.profile?.full_name||app.profile?.email||''} · ${roleAdmin()?'Admin':'Staff'}`;
+  $('sideRole').textContent=roleAdmin()?'Administrator':'Staff Account';
+  $('syncStatus').classList.toggle('offline',!navigator.onLine||app.demo);
+  $('syncStatus').textContent=app.demo?'● DEMO':navigator.onLine?'● Online':'● Offline';
+}
+function route(page){if(page==='staff'&&!roleAdmin())return toast('Admin အတွက်သာ ဖြစ်ပါတယ်။',true);app.route=page;render();window.scrollTo({top:0,behavior:'instant'});}
+function render(){if(!app.profile)return;renderShell();const views={home:renderHome,sell:renderSell,products:renderProducts,vouchers:renderVouchers,customers:renderCustomers,reports:renderReports,locations:renderLocations,settings:renderSettings,staff:renderStaff,more:renderMore};
+  $('mainContent').innerHTML=(app.demo?'<div class="demo-banner">နမူနာ Preview Mode — Online Database မချိတ်ထားပါ။ အချက်အလက်ပြောင်းလဲမှုများ မသိမ်းပါ။ <button class="link-button" data-action="exit-demo">ထွက်ရန်</button></div>':'')+(views[app.route]||renderHome)();
+  if(app.route==='sell')computeSaleTotals(); if(app.route==='settings')setupSignature();
+}
+function stat(icon,label,value,kind=''){return `<div class="stat ${kind}"><div class="stat-icon">${icon}</div><div class="stat-label">${e(label)}</div><div class="stat-value">${e(value)}</div></div>`;}
+function recentSales(limit=5){return app.data.sales.slice().sort((a,b)=>b.created_at.localeCompare(a.created_at)).slice(0,limit);}
+function renderHome(){const t=totals();let low=app.data.products.filter(p=>p.active&&p.stock_on_hand<=3);
+ return pageHead('DASHBOARD','မင်္ဂလာပါ 👋','ဆိုင်အရောင်းနှင့် လက်ကျန်အခြေအနေကို တစ်ချက်ကြည့်နိုင်ပါတယ်။',`<button class="btn primary" data-route="sell">＋ ဘောက်ချာအသစ်</button>`)+
+ `<section class="stats">${stat('▣','စုစုပေါင်းရောင်းအား',fmt(t.amount),'teal')}${stat('◉','လက်ခံရရှိငွေ',fmt(t.paid))}${stat('◷','ကျန်ငွေ',fmt(t.due),'gold')}${stat('◈','လက်ရှိ ပစ္စည်းအမျိုးအစား',String(app.data.products.filter(p=>p.active).length)+' မျိုး')}</section>`+
+ `<div class="split"><section class="panel"><div class="panel-head"><h3>နောက်ဆုံး ဘောက်ချာများ</h3><button class="btn small" data-route="vouchers">အားလုံးကြည့်ရန်</button></div>${recentSales().length?recentSales().map(s=>{const c=customerForSale(s);return `<div class="receipt-card"><div><div class="rv-no">${e(s.voucher_no)}</div><div class="rv-m">${e(c.name)} · ${e(dateTime(s.created_at))}</div></div><div class="text-right"><div class="rv-amount">${fmt(s.total)}</div>${s.status==='void'?'<span class="tag bad">ပယ်ဖျက်</span>':Number(s.total)===Number(s.paid)?'<span class="tag">အကြေ</span>':'<span class="tag warn">စရံ / ကျန်</span>'}</div><div class="rv-buttons"><button class="btn small" data-action="detail" data-id="${s.id}">အသေးစိတ်</button><button class="btn small secondary" data-action="print" data-id="${s.id}">🖨 Print</button><button class="btn small gallery-btn" data-action="save-image" data-id="${s.id}">▣ PNG သိမ်းရန်</button></div></div>`;}).join(''):empty('ဘောက်ချာ မရှိသေးပါ','▤')}</section>`+
+ `<div><section class="panel"><div class="panel-head"><h3>အမြန်လုပ်ဆောင်ရန်</h3></div><div class="quick-grid"><button class="quick" data-route="sell"><span class="quick-symbol">＋</span>အရောင်းအသစ်</button><button class="quick" data-route="products"><span class="quick-symbol">◈</span>Stock ကြည့်ရန်</button><button class="quick" data-route="vouchers"><span class="quick-symbol">▤</span>ဘောက်ချာများ</button><button class="quick" data-route="reports"><span class="quick-symbol">▥</span>စာရင်းချုပ်</button></div></section>
+ <section class="panel"><div class="panel-head"><h3>Stock နည်းသော ပစ္စည်းများ</h3><span class="tag warn">${low.length} မျိုး</span></div>${low.length?low.slice(0,7).map(p=>`<div class="field-row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><strong>${e(p.name)}</strong><span class="tag ${Number(p.stock_on_hand)===0?'bad':'warn'}">${p.stock_on_hand} ခု ကျန်</span></div>`).join(''):empty('လက်ကျန်နည်းသော ပစ္စည်းမရှိပါ','✓')}</section></div></div>`;
+}
+function renderProductsList(){const q=app.filter.products.toLowerCase();const products=app.data.products.filter(p=>[p.name,p.sku,p.category].some(v=>String(v||'').toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name));
+ if(!products.length)return empty('ရှာဖွေထားသော ပစ္စည်းမရှိပါ','◈');
+ return `<div class="table-scroll"><table><thead><tr><th>ပစ္စည်းအမည် / SKU</th><th>ရောင်းဈေး</th><th>ရှိ (ဝင်)</th><th>ရောင်းပြီး</th><th>လက်ကျန်</th><th>အခြေအနေ</th>${roleAdmin()?'<th>ပြင်ရန်</th>':''}</tr></thead><tbody>${products.map(p=>`<tr><td><strong>${e(p.name)}</strong><br><span class="muted mono">${e(p.sku)} · ${e(p.category)}</span></td><td>${fmt(p.price)}</td><td>${p.stock_in}</td><td>${p.sold_count}</td><td><strong>${p.stock_on_hand}</strong></td><td><span class="tag ${!p.active?'grey':p.stock_on_hand?'':'bad'}">${!p.active?'ရပ်ထား':p.stock_on_hand?'ရှိ':'ကုန်'}</span></td>${roleAdmin()?`<td><button class="btn small secondary" data-action="product" data-id="${p.id}">ပြင်ရန်</button></td>`:''}</tr>`).join('')}</tbody></table></div>`;
+}
+function renderProducts(){return pageHead('INVENTORY','ပစ္စည်းအမျိုးအစား / Stock','ပစ္စည်းအဝင်၊ ရောင်းပြီး၊ ကျန်ရှိ စာရင်းကို Online တစ်ပြိုင်တည်းကြည့်ပါ။',roleAdmin()?`<button class="btn primary" data-action="product">＋ ပစ္စည်းအသစ်</button>`:'')+
+ `<div class="stats">${stat('◈','စုစုပေါင်းအဝင်',app.data.products.reduce((n,p)=>n+Number(p.stock_in),0)+' ခု')}${stat('◉','ရောင်းပြီး (Net)',app.data.products.reduce((n,p)=>n+Number(p.sold_count),0)+' ခု','teal')}${stat('▦','လက်ကျန်',app.data.products.reduce((n,p)=>n+Number(p.stock_on_hand),0)+' ခု')}${stat('◷','လက်ကျန်တန်ဖိုး',fmt(app.data.products.reduce((n,p)=>n+Number(p.price)*Number(p.stock_on_hand),0)),'gold')}</div>`+
+ `<div class="panel"><div class="tool-row"><input class="search" data-search="products" placeholder="ပစ္စည်း / SKU ရှာရန်" value="${e(app.filter.products)}">${roleAdmin()?'<span class="muted small">Admin သာ ဈေးနှုန်းနှင့် Stock ပြင်နိုင်သည်။</span>':''}</div><div id="productList">${renderProductsList()}</div></div>`;}
+function blankSaleDraft(){return {customer_id:'',name:'',phone:'',wearer_name:'',date_of_birth:'',weekday:'',country:'Myanmar',city:'',township:'',address:'',items:[{product_id:'',quantity:1}],payment_amount:0,payment_method:'KPay',payment_ref:'',note:''};}
+function saleInput(name,label,type='text',extra=''){return `<label>${e(label)}<input name="${name}" type="${type}" value="${e(app.saleDraft?.[name]??'')}" ${extra}></label>`;}
+function selectOptions(arr,selected){return arr.map(x=>`<option value="${e(x)}" ${x===selected?'selected':''}>${e(x)}</option>`).join('');}
+function renderSell(){if(!app.saleDraft)app.saleDraft=blankSaleDraft();const d=app.saleDraft;
+ const uniqueCountries=[...new Set(['Myanmar','Thailand','Singapore','Malaysia','Japan','South Korea','China','India','United Arab Emirates',...app.data.locations.map(x=>x.country)])];
+ const cities=app.data.locations.filter(x=>x.kind==='city').map(x=>x.name),townships=app.data.locations.filter(x=>x.kind==='township').map(x=>x.name);
+ return pageHead('NEW SALE','ဘောက်ချာအသစ်','Customer၊ အဆောင်မှာသူနှင့် ပေးချေမှုအသေးစိတ် ဖြည့်သွင်းပါ။')+
+ `<form id="saleForm"><section class="panel"><div class="panel-head"><h3>01 · Customer အချက်အလက်</h3><span class="tag">လိုအပ်သောအချက်များ *</span></div>
+ <div class="data-grid"><label class="col-span-2">ရှိပြီးသား Customer ရွေးရန် (မရွေးလည်းရ)<select name="customer_id" id="customerSelect"><option value="">＋ Customer အသစ်</option>${app.data.customers.map(c=>`<option value="${c.id}" ${d.customer_id===c.id?'selected':''}>${e(c.name)} · ${e(c.phone)}</option>`).join('')}</select></label>
+ ${saleInput('name','Customer အမည် *','text','required maxlength="150"')}${saleInput('phone','ဖုန်းနံပါတ် *','tel','required maxlength="35"')}${saleInput('wearer_name','အဆောင်မှာသူ အမည်')}${saleInput('date_of_birth','မွေးသက္ကရာဇ်','date')}
+ <label>နေ့နံ<select name="weekday"><option value="">ရွေးရန်</option>${selectOptions(WEEKDAYS,d.weekday)}</select></label>
+ <label>နိုင်ငံ<input list="countryOptions" name="country" value="${e(d.country)}" placeholder="နိုင်ငံ"></label><label>မြို့<input list="cityOptions" name="city" value="${e(d.city)}" placeholder="မြို့"></label><label>မြို့နယ်<input list="townshipOptions" name="township" value="${e(d.township)}" placeholder="မြို့နယ်"></label><label class="col-span-2">နေရပ်လိပ်စာ<textarea name="address" rows="2">${e(d.address)}</textarea></label></div>
+ <datalist id="countryOptions">${uniqueCountries.map(x=>`<option value="${e(x)}">`).join('')}</datalist><datalist id="cityOptions">${[...new Set(cities)].map(x=>`<option value="${e(x)}">`).join('')}</datalist><datalist id="townshipOptions">${[...new Set(townships)].map(x=>`<option value="${e(x)}">`).join('')}</datalist></section>
+ <section class="panel"><div class="panel-head"><h3>02 · ပစ္စည်းအမျိုးအမည်များ</h3><button class="btn secondary small" type="button" data-action="add-line">＋ တစ်မျိုးထပ်ထည့်</button></div><div class="items-head"><span>ပစ္စည်း</span><span>အရေအတွက်</span><span>တစ်ခုဈေး</span><span>စုစုပေါင်း</span><span></span></div><div id="saleLines">${d.items.map((line,i)=>renderSaleLine(line,i)).join('')}</div><div class="total-strip"><div><span>ကျသင့်ငွေ</span><b id="saleTotal">0 ကျပ်</b></div><div><span>ပေးသွင်းငွေ</span><b id="salePaid">0 ကျပ်</b></div><div class="due"><span>ကျန်ငွေ</span><b id="saleDue">0 ကျပ်</b></div></div></section>
+ <section class="panel"><div class="panel-head"><h3>03 · ငွေပေးချေမှု</h3><span class="tag warn">စရံ / အကြေ</span></div><div class="data-grid"><label>ယခု ပေးသွင်းငွေ (ကျပ်)<input type="number" name="payment_amount" id="salePaymentAmount" min="0" step="1" value="${e(d.payment_amount)}"></label><label>ငွေလွှဲ / ငွေပေးနည်း<select name="payment_method">${selectOptions(METHODS,d.payment_method)}</select></label>${saleInput('payment_ref','Transaction ID / ငွေလွှဲအမှတ်')}<label>မှတ်ချက်<textarea name="note" rows="2">${e(d.note)}</textarea></label></div><div class="notice">ကျသင့်ငွေထက် နည်းလျှင် စရံအဖြစ် သိမ်းထားပြီး ကျန်ငွေကို နောက်မှထပ်သွင်းနိုင်သည်။</div>
+ <div class="inline-actions"><button type="submit" class="btn primary" ${app.busy?'disabled':''}>▤ ဘောက်ချာသိမ်းမည်</button><button type="button" class="btn" data-action="clear-sale">ပြန်ရှင်းရန်</button></div></section></form>`;
+}
+function renderSaleLine(line,i){const p=app.data.products.find(x=>x.id===line.product_id);return `<div class="sale-line" data-index="${i}"><select class="line-product" data-line-field="product_id" aria-label="ပစ္စည်း"><option value="">ပစ္စည်းရွေးရန်</option>${app.data.products.filter(x=>x.active).map(x=>`<option value="${x.id}" ${line.product_id===x.id?'selected':''} ${x.stock_on_hand<1?'disabled':''}>${e(x.name)} · ကျန် ${x.stock_on_hand}</option>`).join('')}</select><input type="number" class="line-qty" data-line-field="quantity" min="1" step="1" value="${e(line.quantity)}" aria-label="အရေအတွက်"><input class="line-price" readonly value="${p?e(fmt(p.price)):'—'}" aria-label="တစ်ခုဈေး"><div class="line-total">${p?fmt(p.price*(num(line.quantity)||0)):'—'}</div><button class="icon-button line-remove" type="button" data-action="remove-line" data-index="${i}" aria-label="ဖယ်ရန်">×</button></div>`;}
+function captureDraft(){const f=$('saleForm');if(!f||!app.saleDraft)return;
+ for(const field of new FormData(f).entries()){const [name,val]=field;if(name!=='items')app.saleDraft[name]=String(val);}
+ $('saleLines')?.querySelectorAll('.sale-line').forEach((root,i)=>{if(app.saleDraft.items[i]){app.saleDraft.items[i].product_id=root.querySelector('[data-line-field=product_id]').value;app.saleDraft.items[i].quantity=root.querySelector('[data-line-field=quantity]').value;}});
+}
+function computeSaleTotals(){if(!$('saleTotal'))return;let total=0;
+ $('saleLines').querySelectorAll('.sale-line').forEach(row=>{const pid=row.querySelector('[data-line-field=product_id]').value,qty=num(row.querySelector('[data-line-field=quantity]').value),p=app.data.products.find(x=>x.id===pid);
+  const price=p?Number(p.price):0; row.querySelector('.line-price').value=p?fmt(price):'—';row.querySelector('.line-total').textContent=p?fmt(price*(validInt(qty,1)?qty:0)):'—';total+=price*(validInt(qty,1)?qty:0);
+ }); const paid=num($('salePaymentAmount')?.value);$('saleTotal').textContent=fmt(total);$('salePaid').textContent=fmt(paid);$('saleDue').textContent=fmt(Math.max(0,total-paid));
+}
+function renderVoucherList(){const q=app.filter.vouchers.toLowerCase();const status=app.filter.voucherStatus;
+ const rows=app.data.sales.filter(s=>{const c=customerForSale(s);const matched=[s.voucher_no,c.name,c.phone,c.city].some(v=>String(v||'').toLowerCase().includes(q));const due=Number(s.total)-Number(s.paid);return matched&&(status==='all'||(status==='void'&&s.status==='void')||(s.status==='active'&& (status==='active'||(status==='due'&&due>0)||(status==='paid'&&due===0))));}).sort((a,b)=>b.created_at.localeCompare(a.created_at));
+ if(!rows.length)return empty('လိုက်ဖက်သော ဘောက်ချာမရှိသေးပါ','▤');
+ return rows.map(s=>{const c=customerForSale(s);const due=Number(s.total)-Number(s.paid);return `<div class="receipt-card"><div><div class="rv-no">${e(s.voucher_no)} ${s.status==='void'?'<span class="tag bad">ပယ်ဖျက်</span>':due>0?'<span class="tag warn">ကျန်ငွေရှိ</span>':'<span class="tag">အကြေ</span>'}</div><div class="rv-m">${e(dateTime(s.created_at))}</div><div class="small"><strong>${e(c.name)}</strong> · ${e(c.phone)}</div></div><div><div class="rv-amount">${fmt(s.total)}</div><div class="muted small text-right">ကျန် ${fmt(due)}</div></div><div class="rv-buttons"><button class="btn small" data-action="detail" data-id="${s.id}">အသေးစိတ်</button><button class="btn small secondary" data-action="print" data-id="${s.id}">🖨 Print</button><button class="btn small gallery-btn" data-action="save-image" data-id="${s.id}">▣ PNG သိမ်းရန်</button>${s.status==='active'&&due>0?`<button class="btn small gold" data-action="pay" data-id="${s.id}">＋ ငွေထပ်သွင်း</button>`:''}${s.status==='active'&&roleAdmin()?`<button class="btn small danger" data-action="void" data-id="${s.id}">ပယ်ဖျက်</button>`:''}</div></div>`;}).join('');
+}
+function renderVouchers(){return pageHead('VOUCHERS','ဘောက်ချာ / အရောင်းစာရင်း','စရံ၊ အကြေ၊ ကျန်ငွေစာရင်းများကို အချိန်မရွေးကြည့်နိုင်သည်။',`<button class="btn primary" data-route="sell">＋ အရောင်းအသစ်</button>`)+
+ `<div class="panel"><div class="tool-row"><input class="search" data-search="vouchers" placeholder="ဘောက်ချာ၊ Customer၊ ဖုန်းရှာရန်" value="${e(app.filter.vouchers)}"><select id="voucherStatus" style="width:auto"><option value="all">အားလုံး</option><option value="active" ${app.filter.voucherStatus==='active'?'selected':''}>အရောင်း</option><option value="due" ${app.filter.voucherStatus==='due'?'selected':''}>ကျန်ငွေရှိ</option><option value="paid" ${app.filter.voucherStatus==='paid'?'selected':''}>အကြေ</option><option value="void" ${app.filter.voucherStatus==='void'?'selected':''}>ပယ်ဖျက်</option></select></div><div id="voucherList">${renderVoucherList()}</div></div>`;}
+function renderCustomerList(){const q=app.filter.customers.toLowerCase();const list=app.data.customers.filter(c=>[c.name,c.phone,c.wearer_name,c.city,c.township,c.country].some(x=>String(x||'').toLowerCase().includes(q))).sort((a,b)=>b.created_at.localeCompare(a.created_at));return list.length?`<div class="table-scroll"><table><thead><tr><th>Customer / ဖုန်း</th><th>အဆောင်မှာသူ</th><th>မွေးသက္ကရာဇ် / နေ့နံ</th><th>နေထိုင်ရာ</th><th>ဘောက်ချာ</th></tr></thead><tbody>${list.map(c=>`<tr><td><strong>${e(c.name)}</strong><br>${e(c.phone)}</td><td>${e(c.wearer_name||c.name)}</td><td>${e(c.date_of_birth||'—')}<br>${e(c.weekday)}</td><td>${e([c.country,c.city,c.township].filter(Boolean).join(' / '))}<br><span class="muted">${e(c.address)}</span></td><td>${app.data.sales.filter(s=>s.customer_id===c.id&&s.status==='active').length}</td></tr>`).join('')}</tbody></table></div>`:empty('Customer မရှိသေးပါ','♙');}
+function renderCustomers(){return pageHead('CUSTOMERS','Customer စာရင်း','ဖုန်း၊ မွေးသက္ကရာဇ်၊ နေ့နံ၊ လိပ်စာနှင့် ဝယ်ယူမှုမှတ်တမ်းများ')+`<div class="panel"><div class="tool-row"><input class="search" data-search="customers" placeholder="Customer / ဖုန်း / မြို့ ရှာရန်" value="${e(app.filter.customers)}"></div><div id="customerList">${renderCustomerList()}</div></div>`;}
+function renderReports(){const t=totals(),products=app.data.products;return pageHead('REPORTS','အရောင်း / Stock စာရင်းချုပ်','ဆိုင်၏ အခြေအနေအားလုံးကို တစ်နေရာတည်းတွင် ကြည့်နိုင်သည်။',roleAdmin()?`<button class="btn secondary" data-action="csv">⬇ CSV Export</button>`:'')+
+ `<div class="stats">${stat('▣','ရောင်းအား',fmt(t.amount),'teal')}${stat('◎','လက်ခံရငွေ',fmt(t.paid))}${stat('◷','ကျန်ငွေ',fmt(t.due),'gold')}${stat('▤','အရောင်းဘောက်ချာ',t.sales.length+' စောင်')}</div>`+
+ `<div class="panel"><div class="panel-head"><h3>ရှိ / ရောင်း / ကျန်</h3><span class="muted small">ပယ်ဖျက်ထားသော Voucher မပါဝင်</span></div><div class="table-scroll"><table><thead><tr><th>ပစ္စည်း</th><th>လက်ရှိဈေး</th><th>အဝင်</th><th>ရောင်း</th><th>ကျန်</th><th>လက်ကျန်တန်ဖိုး</th></tr></thead><tbody>${products.map(p=>`<tr><td><strong>${e(p.name)}</strong><div class="muted mono">${e(p.sku)}</div></td><td>${fmt(p.price)}</td><td>${p.stock_in}</td><td>${p.sold_count}</td><td>${p.stock_on_hand}</td><td>${fmt(Number(p.price)*Number(p.stock_on_hand))}</td></tr>`).join('')||'<tr><td colspan="6">ပစ္စည်းမရှိပါ</td></tr>'}</tbody></table></div></div>`;
+}
+function renderLocations(){const list=app.data.locations.slice().sort((a,b)=>a.country.localeCompare(b.country)||a.name.localeCompare(b.name));return pageHead('LOCATIONS','မြို့ / မြို့နယ်','မြန်မာနှင့် နိုင်ငံခြားမြို့၊ မြို့နယ်အသစ်များ ထည့်သွင်းနိုင်သည်။')+
+ `<div class="split"><div class="panel"><h3>နေရာအသစ်ထည့်ရန်</h3><form id="locationForm" class="stack-form"><label>အမျိုးအစား<select name="kind"><option value="city">မြို့ (City)</option><option value="township">မြို့နယ် (Township)</option></select></label><label>နိုင်ငံ<input name="country" value="Myanmar" required maxlength="120" placeholder="Myanmar / Thailand / ..."></label><label>မြို့နယ်ဖြစ်လျှင် မိခင်မြို့<input name="city" maxlength="120" placeholder="ဥပမာ Yangon"></label><label>မြို့ / မြို့နယ်အမည်<input name="name" required maxlength="120" placeholder="အမည်"></label><button type="submit" class="btn primary">＋ ထည့်သွင်းရန်</button></form></div>
+ <div class="panel"><div class="panel-head"><h3>သိမ်းထားသော နေရာများ</h3><span class="tag">${list.length} ခု</span></div>${list.length?list.map(x=>`<div style="padding:11px 0;border-bottom:1px solid #edf0f0"><strong>${e(x.name)}</strong> <span class="tag grey">${x.kind==='city'?'မြို့':'မြို့နယ်'}</span><div class="muted small">${e([x.country,x.city].filter(Boolean).join(' · '))}</div></div>`).join(''):empty('နေရာအသစ်ထည့်နိုင်ပါသည်','⌖')}</div></div>`;}
+function renderSettings(){const s=app.data.settings;return pageHead('SHOP SETTINGS','ဆိုင်အချက်အလက် / Print','ဆိုင်အမည်၊ Owner လက်မှတ်နှင့် ဘောက်ချာစာရွက်အရွယ်အစားများ')+
+ (roleAdmin()?`<form id="settingsForm"><div class="panel"><h3>ဆိုင်အချက်အလက်</h3><div class="data-grid"><label>ဆိုင်အမည်<input name="shop_name" value="${e(s.shop_name)}" required></label><label>ဆိုင်ဖုန်း<input name="shop_phone" value="${e(s.shop_phone)}"></label><label>Owner အမည်<input name="owner_name" value="${e(s.owner_name)}"></label><label>Print စာရွက်<select name="paper_size">${selectOptions(PAPER,s.paper_size)}</select></label><label class="col-span-2">ဆိုင်လိပ်စာ<textarea name="shop_address">${e(s.shop_address)}</textarea></label><label class="col-span-2">ဘောက်ချာ အောက်ခြေစာ<textarea name="receipt_note">${e(s.receipt_note)}</textarea></label></div><h3 class="subheading">Owner လက်မှတ် (ဖုန်း Screen ပေါ်မှာ လက်ဖြင့်ထိုးနိုင်သည်)</h3><canvas width="800" height="210" class="signature-canvas" id="signatureCanvas"></canvas><div class="field-row" style="margin-top:9px"><button class="btn small danger" type="button" data-action="clear-signature">လက်မှတ်ဖျက်ရန်</button><span class="muted small">လက်မှတ်ကို ဘောက်ချာ Print တွင် အသုံးပြုမည်။</span></div><div class="inline-actions"><button class="btn primary" type="submit">Setting သိမ်းမည်</button></div></div></form>`:
+ `<div class="panel"><div class="notice">ဆိုင် Setting ကို Admin သာပြင်ဆင်နိုင်သည်။</div><div><strong>${e(s.shop_name)}</strong><br>${e(s.shop_phone)}<br>${e(s.shop_address)}<br>Owner: ${e(s.owner_name)}<br>Paper: ${e(s.paper_size)}</div></div>`)+
+ `<div class="panel"><h3>ကိုယ်ပိုင် Password ပြောင်းရန်</h3><form id="passwordForm" class="stack-form"><label>Password အသစ် (အနည်းဆုံး 10 လုံး)<input type="password" name="password" minlength="10" required autocomplete="new-password"></label><button class="btn secondary" type="submit">Password ပြောင်းမည်</button></form></div>`;}
+function renderStaff(){if(!roleAdmin())return empty('Admin only');return pageHead('TEAM','ဝန်ထမ်းအကောင့်များ','အကောင့်အသစ် ဖန်တီးပြီး ခွင့်ပြုခြင်း/ပိတ်ခြင်း ပြုလုပ်နိုင်သည်။')+
+ `<div class="split"><div class="panel"><h3>ဝန်ထမ်းအသစ်</h3><form id="staffForm" class="stack-form"><label>ဝန်ထမ်းအမည်<input name="full_name" required maxlength="100"></label><label>Email<input name="email" type="email" required></label><label>စတင်အသုံးပြုမည့် Password<input name="password" type="password" required minlength="10" autocomplete="new-password"></label><div class="notice">အကောင့်ဖန်တီးရန် Supabase Edge Function <b>manage-staff</b> ကို Deploy လုပ်ထားရပါမယ်။ ဝန်ထမ်းကို Password ပြောင်းခိုင်းပါ။</div><button class="btn primary" type="submit">＋ ဝန်ထမ်းအကောင့်ဖွင့်ရန်</button></form></div>
+ <div class="panel"><div class="panel-head"><h3>အကောင့်စာရင်း</h3><span class="tag">${app.data.profiles.length} ဦး</span></div>${app.data.profiles.map(p=>`<div class="receipt-card"><div><strong>${e(p.full_name||p.email)}</strong><div class="rv-m">${e(p.email)}</div><span class="tag ${p.active?'':'bad'}">${p.role==='admin'?'Admin':p.active?'Active':'Disabled'}</span></div><div>${p.role==='staff'?`<button class="btn small ${p.active?'danger':'secondary'}" data-action="toggle-staff" data-id="${p.user_id}" data-next="${p.active?'false':'true'}">${p.active?'ပိတ်ရန်':'ဖွင့်ရန်'}</button>`:''}</div></div>`).join('')||empty('ဝန်ထမ်းမရှိသေးပါ')}</div></div>`;}
+function renderMore(){return pageHead('MORE','အခြားလုပ်ဆောင်ချက်များ','ဆိုင် Setting၊ စာရင်းချုပ်နှင့် ဝန်ထမ်းအကောင့် စီမံရန်')+
+ `<div class="panel"><div class="quick-grid">${navItems.filter(x=>['customers','reports','locations','settings',...(roleAdmin()?['staff']:[])].includes(x.id)).map(x=>`<button class="quick" data-route="${x.id}"><span class="quick-symbol">${x.icon}</span>${e(x.text)}</button>`).join('')}</div></div><div class="panel"><div class="small muted">လက်ရှိအသုံးပြုသူ</div><h3>${e(app.profile?.full_name||app.profile?.email)}</h3><p class="muted">${roleAdmin()?'Administrator':'Staff'} · ${e(app.profile?.email)}</p><button class="btn danger" data-action="logout">⇥ Logout</button></div>`;}
+// ---------- Modal / form helpers ----------
+function modal(title,html){$('modalTitle').textContent=title;$('modalContent').innerHTML=html;$('modalRoot').classList.remove('hidden');}
+function closeModal(){$('modalRoot').classList.add('hidden');$('modalContent').innerHTML='';}
+function formObj(form){return Object.fromEntries(new FormData(form).entries());}
+function productModal(id){if(!roleAdmin())return toast('Admin အတွက်သာဖြစ်သည်။',true);const p=app.data.products.find(x=>x.id===id)||{id:'',sku:'',name:'',category:'',price:0,stock_in:0,stock_on_hand:0,active:true};
+ modal(p.id?'ပစ္စည်း ပြင်ရန်':'ပစ္စည်းအသစ် ထည့်ရန်',`<form id="productForm" class="stack-form"><input type="hidden" name="id" value="${e(p.id)}"><div class="data-grid"><label>SKU / ပစ္စည်းကုဒ် *<input name="sku" required maxlength="60" value="${e(p.sku)}"></label><label>အမျိုးအစား<input name="category" maxlength="100" value="${e(p.category)}"></label><label class="col-span-2">ပစ္စည်းအမည် *<input name="name" required maxlength="150" value="${e(p.name)}"></label><label>လက်ရှိရောင်းဈေး (ကျပ်) *<input name="price" type="number" min="0" step="1" required value="${e(p.price)}"></label><label>Stock အသစ်ထပ်ဝင် (ခု)<input name="stock_add" type="number" min="0" step="1" value="0"></label><label>အရောင်းအခြေအနေ<select name="active"><option value="true" ${p.active?'selected':''}>ရောင်းနိုင်</option><option value="false" ${!p.active?'selected':''}>ရပ်ထား</option></select></label></div><div class="success-note">လက်ရှိအဝင် ${p.stock_in} ခု · ရောင်းပြီး ${p.sold_count||0} ခု · ကျန် ${p.stock_on_hand} ခု။ Stock အသစ်ထပ်ဝင်မည့် အရေအတွက်သာ ထည့်ပါ။</div><button type="submit" class="btn primary block">ပစ္စည်း သိမ်းမည်</button></form>`);
+}
+function voucherDetail(id){const s=app.data.sales.find(x=>x.id===id);if(!s)return toast('ဘောက်ချာမတွေ့ပါ',true);const c=customerForSale(s),rows=saleItems(id),pays=payments(id),due=Number(s.total)-Number(s.paid);
+ modal('ဘောက်ချာ '+s.voucher_no,`<div class="field-row" style="justify-content:space-between"><span class="tag ${s.status==='void'?'bad':due?'warn':''}">${s.status==='void'?'ပယ်ဖျက်ထား':due?'ကျန်ငွေရှိ':'အကြေ'}</span><span class="muted small">${e(dateTime(s.created_at))}</span></div><h3 class="subheading">Customer / အဆောင်မှာသူ</h3><div class="data-grid"><div><span class="muted small">Customer</span><br><strong>${e(c.name)}</strong><br>${e(c.phone)}</div><div><span class="muted small">အဆောင်မှာသူ</span><br>${e(c.wearer_name||c.name)}<br>${e(c.date_of_birth||'—')} · ${e(c.weekday)}</div><div class="col-span-2"><span class="muted small">လိပ်စာ</span><br>${e([c.country,c.city,c.township,c.address].filter(Boolean).join(' / '))}</div></div>
+ <h3 class="subheading">ပစ္စည်းများ</h3><div class="table-scroll"><table style="min-width:400px"><thead><tr><th>အမည်</th><th>အရေအတွက်</th><th>ဈေး</th><th>စုစုပေါင်း</th></tr></thead><tbody>${rows.map(i=>`<tr><td>${e(i.product_name)}</td><td>${i.quantity}</td><td>${fmt(i.unit_price)}</td><td>${fmt(i.line_total)}</td></tr>`).join('')}</tbody></table></div>
+ <div class="total-strip"><div><span>ကျသင့်</span><b>${fmt(s.total)}</b></div><div><span>ပေးပြီး</span><b>${fmt(s.paid)}</b></div><div class="due"><span>ကျန်ငွေ</span><b>${fmt(due)}</b></div></div>
+ <h3 class="subheading">ငွေပေးသွင်းမှု မှတ်တမ်း</h3>${pays.length?pays.map(p=>`<div class="field-row" style="justify-content:space-between;border-bottom:1px solid #eee;padding:7px 0"><div><strong>${e(p.method)}</strong> <span class="muted small">${e(p.reference)}</span><div class="muted small">${e(dateTime(p.created_at))}</div></div><strong>${fmt(p.amount)}</strong></div>`).join(''):empty('ငွေသွင်းမှု မရှိသေးပါ','◷')}
+ ${s.note?`<p class="customer-note">မှတ်ချက် — ${e(s.note)}</p>`:''}
+ ${s.status==='void'?'<div class="notice">ပယ်ဖျက်ထားသော ဘောက်ချာဖြစ်သည်။ ငွေပြန်အမ်းမှုကို သီးခြားစီမံရမည်။</div>':''}<div class="inline-actions"><button class="btn primary" data-action="print" data-id="${s.id}">🖨 Print</button><button class="btn gallery-btn" data-action="save-image" data-id="${s.id}">▣ ဖုန်း Gallery အတွက် PNG သိမ်းရန်</button><button class="btn secondary" data-action="share-image" data-id="${s.id}">↗ Share Image</button>${s.status==='active'&&due>0?`<button class="btn gold" data-action="pay" data-id="${s.id}">＋ ကျန်ငွေထပ်သွင်း</button>`:''}</div>`);
+}
+function payModal(id){const s=app.data.sales.find(x=>x.id===id);if(!s||s.status!=='active')return;const due=Number(s.total)-Number(s.paid);if(due<=0)return toast('အကြေပေးပြီးပါပြီ။');
+ modal('ကျန်ငွေထပ်သွင်း · '+s.voucher_no,`<form id="paymentForm" class="stack-form"><input name="sale_id" type="hidden" value="${s.id}"><div class="success-note">ကျန်ငွေ <b>${fmt(due)}</b></div><label>ယခု ထပ်ပေးသွင်းငွေ<input name="amount" type="number" min="1" max="${due}" value="${due}" required step="1"></label><label>ငွေပေးချေနည်း<select name="method">${selectOptions(METHODS,'KPay')}</select></label><label>Transaction ID / မှတ်ချက်<input name="reference" maxlength="200" placeholder="optional"></label><button class="btn primary block" type="submit">ငွေထပ်သွင်းမည်</button></form>`);
+}
+function setupSignature(){const canvas=$('signatureCanvas');if(!canvas)return;const context=canvas.getContext('2d');let drawing=false;context.lineWidth=3;context.lineJoin='round';context.lineCap='round';context.strokeStyle='#183b42';app.signatureChanged=false;
+ const saved=app.data.settings.signature;if(saved&&/^data:image\/png;base64,/.test(saved)){const img=new Image();img.onload=()=>context.drawImage(img,0,0,canvas.width,canvas.height);img.src=saved;}
+ function coords(ev){const rect=canvas.getBoundingClientRect();return {x:(ev.clientX-rect.left)*canvas.width/rect.width,y:(ev.clientY-rect.top)*canvas.height/rect.height};}
+ canvas.addEventListener('pointerdown',ev=>{drawing=true;app.signatureChanged=true;canvas.setPointerCapture(ev.pointerId);const p=coords(ev);context.beginPath();context.moveTo(p.x,p.y);context.lineTo(p.x+.3,p.y+.3);context.stroke();ev.preventDefault();});
+ canvas.addEventListener('pointermove',ev=>{if(!drawing)return;const p=coords(ev);context.lineTo(p.x,p.y);context.stroke();ev.preventDefault();});
+ ['pointerup','pointercancel','lostpointercapture'].forEach(name=>canvas.addEventListener(name,()=>drawing=false));
+}
+function pdfPaperSize(size){return size==='A4'?'A4 portrait':size==='A5'?'A5 portrait':size==='80mm'?'80mm 200mm':'58mm 200mm';}
+function printVoucher(id){const s=app.data.sales.find(x=>x.id===id);if(!s)return toast('ဘောက်ချာမရှိပါ',true);const c=customerForSale(s),rows=saleItems(id),pays=payments(id),settings=app.data.settings,paper=settings.paper_size||'A5';
+ const payRows=pays.map(p=>`<div class="rrow"><span>${e(p.method)} · ${e(dateTime(p.created_at))} ${e(p.reference)}</span><strong>${fmt(p.amount)}</strong></div>`).join('');
+ $('printRoot').innerHTML=`<article class="receipt"><div class="receipt-header"><h2>${e(settings.shop_name)}</h2><div>${e(settings.shop_phone)}</div><div>${e(settings.shop_address)}</div></div><div class="receipt-no">အရောင်းဘောက်ချာ · ${e(s.voucher_no)}</div><div class="rrow"><span>နေ့စွဲ</span><strong>${e(dateTime(s.created_at))}</strong></div><div><strong>Customer:</strong> ${e(c.name)} · ${e(c.phone)}</div><div><strong>အဆောင်မှာသူ:</strong> ${e(c.wearer_name||c.name)}</div><div><strong>မွေးသက္ကရာဇ်/နေ့နံ:</strong> ${e(c.date_of_birth||'—')} / ${e(c.weekday||'—')}</div><div><strong>နေရပ်:</strong> ${e([c.country,c.city,c.township,c.address].filter(Boolean).join(', '))}</div>
+ <table class="ritems"><thead><tr><th>ပစ္စည်း</th><th>ခု</th><th>ဈေး</th><th>ကျသင့်</th></tr></thead><tbody>${rows.map(i=>`<tr><td>${e(i.product_name)}</td><td>${i.quantity}</td><td>${fmt(i.unit_price)}</td><td>${fmt(i.line_total)}</td></tr>`).join('')}</tbody></table><div class="rsummary"><div class="rrow"><span>စုစုပေါင်း</span><strong>${fmt(s.total)}</strong></div><div class="rrow"><span>ပေးပြီး</span><strong>${fmt(s.paid)}</strong></div><div class="rrow"><span>ကျန်ငွေ</span><strong>${fmt(Number(s.total)-Number(s.paid))}</strong></div></div>
+ ${pays.length?`<div style="margin-top:13px"><b>ပေးသွင်းမှတ်တမ်း</b>${payRows}</div>`:''}${s.note?`<p><b>မှတ်ချက်:</b> ${e(s.note)}</p>`:''}<div class="sign-row"><div>${settings.signature&&/^data:image\/png;base64,/.test(settings.signature)?`<img src="${e(settings.signature)}" alt="Owner signature">`:'<div style="height:60px"></div>'}<div class="sign-line">${e(settings.owner_name||'Owner')}<br>Owner Signature</div></div><div><div style="height:60px"></div><div class="sign-line">Customer လက်မှတ်</div></div></div><div class="thank">${s.status==='void'?'** ပယ်ဖျက်ထားသော ဘောက်ချာ **':''}<br>${e(settings.receipt_note)}</div></article>`;
+ document.body.classList.toggle('print-80',paper==='80mm');document.body.classList.toggle('print-58',paper==='58mm');
+ const old=$('paperOverride');if(old)old.remove();const style=document.createElement('style');style.id='paperOverride';style.textContent=`@media print{@page{size:${pdfPaperSize(paper)};margin:0}}`;document.head.append(style);
+ closeModal();setTimeout(()=>window.print(),100);
+}
+// Image saving is entirely on-device. Gallery access is browser controlled: PNG downloads
+// usually appear in Downloads/Photos, and Android Share can send directly to Photos/Files.
+async function exportVoucherImage(id,share=false){
+ const s=app.data.sales.find(x=>x.id===id);
+ if(!s)return toast('ဘောက်ချာမရှိပါ။',true);
+ const result=await makeVoucherPng({sale:s,customer:customerForSale(s),items:saleItems(id),payments:payments(id),settings:app.data.settings});
+ const file=new File([result.blob],result.filename,{type:'image/png'});
+ if(share){
+  if(navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))){
+   try{await navigator.share({files:[file],title:s.voucher_no,text:'လောကီအဆောင် ဘောက်ချာ'});return;}
+   catch(err){if(err?.name==='AbortError')return;}
+  }
+  toast('ဒီ Browser မှာ Photo Share မရပါ။ PNG Download အစားထိုးထားပါတယ်။');
+ }
+ const url=URL.createObjectURL(result.blob);
+ const a=document.createElement('a');a.href=url;a.download=result.filename;a.style.display='none';
+ document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
+ toast('PNG Voucher ဒေါင်းလုပ်စတင်ပါပြီ။ Gallery/Photos သို့မဟုတ် Downloads မှ ကြည့်နိုင်ပါတယ်။');
+}
+function downloadCsv(){if(!roleAdmin()||guardDemo())return;const rows=[['Type','SKU/Voucher','Name','Price/MMK','Stock In','Sold','Remaining','Total/MMK','Paid/MMK','Due/MMK','Status','Date']];
+ for(const p of app.data.products)rows.push(['PRODUCT',p.sku,p.name,p.price,p.stock_in,p.sold_count,p.stock_on_hand,'','','',p.active?'Active':'Archived','']);
+ for(const s of app.data.sales)rows.push(['SALE',s.voucher_no,customerForSale(s).name,'','','','',s.total,s.paid,Number(s.total)-Number(s.paid),s.status,s.created_at]);
+ const textCsv='\ufeff'+rows.map(row=>row.map(v=>`"${String(v??'').replaceAll('"','""')}"`).join(',')).join('\r\n');
+ const blob=new Blob([textCsv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lawki-report-'+new Date().toISOString().slice(0,10)+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+// ---------- Supabase access and load ----------
+async function fetchPages(table,sort='created_at',ascending=false){const data=[];for(let page=0;page<100;page++){
+  const q=app.sb.from(table).select('*').order(sort,{ascending}).range(page*1000,page*1000+999);
+  const {data:items,error}=await q;if(error)throw error;data.push(...(items||[]));if(!items||items.length<1000)return data;
+ }throw new Error(`Too many ${table} records for this mobile report. Please paginate.`);
+}
+async function fetchData(silent=false){if(app.demo||!app.sb||app.refreshing)return;app.refreshing=true;try{
+  const requests=[fetchPages('products','name',true),fetchPages('customers'),fetchPages('sales'),fetchPages('sale_items','id',true),fetchPages('payments'),fetchPages('locations','name',true),fetchPages('profiles','created_at',true),app.sb.from('shop_settings').select('*').eq('id',1).single()];
+  const results=await Promise.all(requests);const settings=results[7];if(settings.error)throw settings.error;
+  ['products','customers','sales','sale_items','payments','locations','profiles'].forEach((k,i)=>app.data[k]=results[i]);
+  app.data.settings=settings.data||{...defaultSettings};
+  if(app.route!=='sell' || !silent)render();else renderShell();
+ }catch(err){if(!silent)toast('Online Database: '+errorText(err),true);console.error('Database load:',err);}finally{app.refreshing=false;}
+}
+async function authProfile(){if(!app.sb)return;const {data:{session}}=await app.sb.auth.getSession();app.session=session;if(!session){showLogin();return;}
+ const {data:profile,error}=await app.sb.from('profiles').select('*').eq('user_id',session.user.id).maybeSingle();
+ if(error){showLogin();$('loginError').classList.remove('hidden');$('loginError').textContent=errorText(error);return;}
+ if(!profile?.active){showLogin();$('loginError').classList.remove('hidden');$('loginError').textContent='အကောင့်ကို Admin မှ Active မဖွင့်ရသေးပါ။ Supabase SQL Editor တွင် ပထမ Admin ကို Active လုပ်ရန် Setup Guide ကြည့်ပါ။';return;}
+ app.profile=profile;app.demo=false;app.saleDraft=null;$('loadingView').classList.add('hidden');$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');await fetchData();attachRealtime();
+}
+function showLogin(){$('loadingView').classList.add('hidden');$('appView').classList.add('hidden');$('loginView').classList.remove('hidden');app.profile=null;app.saleDraft=null;}
+function stopRealtime(){if(app.timer)clearInterval(app.timer);app.timer=null;if(app.realtime&&app.sb){app.sb.removeChannel(app.realtime);app.realtime=null;}}
+let syncTimeout;
+function attachRealtime(){stopRealtime();if(!app.sb||app.demo)return;
+ let ch=app.sb.channel('lawki-shared-change');for(const t of ['products','customers','sales','sale_items','payments','locations','shop_settings','profiles']){
+  ch=ch.on('postgres_changes',{event:'*',schema:'public',table:t},()=>{clearTimeout(syncTimeout);syncTimeout=setTimeout(()=>fetchData(true),500)});
+ }
+ app.realtime=ch.subscribe((status)=>{const el=$('syncStatus');if(!el)return;if(status==='SUBSCRIBED'){el.textContent='● Live Sync';el.classList.remove('offline');}else if(status==='CHANNEL_ERROR'||status==='TIMED_OUT'){el.textContent='● Polling';}});
+ // Fallback and recovery when Android sleeps / realtime disconnects.
+ app.timer=setInterval(()=>{if(navigator.onLine&&document.visibilityState==='visible')fetchData(true);},30000);
+}
+async function withBusy(operation){if(app.busy)return;app.busy=true;document.querySelectorAll('button[type=submit]').forEach(b=>b.disabled=true);
+ try{await operation();}catch(err){console.error(err);toast(errorText(err),true);}finally{app.busy=false;document.querySelectorAll('button[type=submit]').forEach(b=>b.disabled=false);}}
+async function rpc(name,params){const {data,error}=await app.sb.rpc(name,params);if(error)throw error;return data;}
+function sampleDemo(){const now=new Date().toISOString();const id1='00000000-0000-4000-8000-000000000001',id2='00000000-0000-4000-8000-000000000002',c='00000000-0000-4000-8000-000000000003',v='00000000-0000-4000-8000-000000000004';
+ app.demo=true;app.profile={user_id:'demo',full_name:'ဆိုင်ပိုင်ရှင် (Preview)',email:'demo@lawki.example',role:'admin',active:true};app.data={products:[{id:id1,sku:'LK-001',name:'ပုတီးအဆောင်',category:'လောကီပစ္စည်း',price:25000,stock_in:20,sold_count:5,stock_on_hand:15,active:true},{id:id2,sku:'LK-002',name:'ရွှေချထားသော အဆောင်',category:'အဆောင်',price:85000,stock_in:10,sold_count:3,stock_on_hand:7,active:true}],customers:[{id:c,name:'မောင်မောင်',phone:'09••••••••',wearer_name:'မောင်မောင်',date_of_birth:'1995-05-12',weekday:'သောကြာ',country:'Myanmar',city:'Yangon',township:'Bahan',address:'ရန်ကုန်',created_at:now}],sales:[{id:v,voucher_no:'LK-0000001',customer_id:c,customer_snapshot:{name:'မောင်မောင်',phone:'09••••••••',wearer_name:'မောင်မောင်',date_of_birth:'1995-05-12',weekday:'သောကြာ',country:'Myanmar',city:'Yangon',township:'Bahan',address:'ရန်ကုန်'},total:110000,paid:50000,note:'နမူနာဘောက်ချာ',status:'active',created_at:now}],sale_items:[{sale_id:v,product_id:id1,product_name:'ပုတီးအဆောင်',quantity:1,unit_price:25000,line_total:25000},{sale_id:v,product_id:id2,product_name:'ရွှေချထားသော အဆောင်',quantity:1,unit_price:85000,line_total:85000}],payments:[{sale_id:v,amount:50000,method:'KPay',reference:'DEMO',created_at:now}],locations:[{id:'demo',kind:'city',country:'Myanmar',city:'',name:'Yangon'}],profiles:[{user_id:'demo',full_name:'ဆိုင်ပိုင်ရှင် (Preview)',email:'demo@lawki.example',role:'admin',active:true}],settings:{...defaultSettings,shop_name:'လောကီအဆောင် - Demo',owner_name:'Owner'}};
+ app.route='home';app.saleDraft=null;$('loadingView').classList.add('hidden');$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');render();
+}
+async function exitDemo(){app.demo=false;app.profile=null;app.saleDraft=null;showLogin();}
+// ---------- Browser events ----------
+document.addEventListener('click',async(event)=>{const routeEl=event.target.closest('[data-route]');if(routeEl){route(routeEl.dataset.route);return;}
+ const target=event.target.closest('[data-action]');if(!target)return;const action=target.dataset.action,id=target.dataset.id;
+ if(action==='demo'){sampleDemo();return;}if(action==='exit-demo'){await exitDemo();return;}
+ if(action==='logout'){if(app.demo)return exitDemo();stopRealtime();if(app.sb)await app.sb.auth.signOut();showLogin();return;}
+ if(action==='close-modal'){closeModal();return;}
+ if(action==='product'){productModal(id);return;}
+ if(action==='detail'){voucherDetail(id);return;}
+ if(action==='pay'){if(guardDemo())return;payModal(id);return;}
+ if(action==='print'){printVoucher(id);return;}
+ if(action==='save-image'||action==='share-image'){await withBusy(()=>exportVoucherImage(id,action==='share-image'));return;}
+ if(action==='csv'){downloadCsv();return;}
+ if(action==='clear-signature'){const canvas=$('signatureCanvas');if(canvas){canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);app.signatureChanged=true;}return;}
+ if(action==='add-line'){captureDraft();app.saleDraft.items.push({product_id:'',quantity:1});render();return;}
+ if(action==='remove-line'){captureDraft();if(app.saleDraft.items.length<=1){toast('ပစ္စည်းအနည်းဆုံး တစ်မျိုးလိုပါတယ်။');return;}app.saleDraft.items.splice(Number(target.dataset.index),1);render();return;}
+ if(action==='clear-sale'){if(confirm('ရေးထားသော အရောင်းအသစ်ကို ပြန်ရှင်းမလား?')){app.saleDraft=blankSaleDraft();render();}return;}
+ if(action==='void'){if(guardDemo()||!roleAdmin())return;if(!confirm('ဤ Voucher ကို ပယ်ဖျက်မလား? Stock ပြန်ဝင်မည်။ ငွေပြန်အမ်းမှုသည် အလိုအလျောက်မဟုတ်ပါ။'))return;
+  await withBusy(async()=>{await rpc('lawki_void_sale',{p_sale_id:id});closeModal();await fetchData();toast('Voucher ပယ်ဖျက်ပြီး Stock ပြန်ဝင်ပါပြီ။');});return;}
+ if(action==='toggle-staff'){if(guardDemo()||!roleAdmin())return;const active=target.dataset.next==='true';if(!confirm(`ဝန်ထမ်းအကောင့်ကို ${active?'ဖွင့်':'ပိတ်'} မလား?`))return;
+  await withBusy(async()=>{await rpc('lawki_set_staff_active',{p_user:id,p_active:active});await fetchData();toast('ဝန်ထမ်းအကောင့် အခြေအနေ ပြောင်းပြီးပါပြီ။');});return;}
+});
+document.addEventListener('input',event=>{const field=event.target;const search=field.dataset?.search;if(search){app.filter[search]=field.value;const target={products:'productList',vouchers:'voucherList',customers:'customerList'}[search];$(target).innerHTML=({products:renderProductsList,vouchers:renderVoucherList,customers:renderCustomerList})[search]();return;}
+ if(field.closest('#saleForm')&&(field.id==='salePaymentAmount'||field.dataset.lineField)){computeSaleTotals();}
+});
+document.addEventListener('change',event=>{const target=event.target;
+ if(target.id==='voucherStatus'){app.filter.voucherStatus=target.value;$('voucherList').innerHTML=renderVoucherList();return;}
+ if(target.id==='customerSelect'){const c=app.data.customers.find(x=>x.id===target.value);if(c){for(const k of ['name','phone','wearer_name','date_of_birth','weekday','country','city','township','address']){const f=$('saleForm')?.elements.namedItem(k);if(f)f.value=c[k]??'';}} else {for(const k of ['name','phone','wearer_name','date_of_birth','weekday','country','city','township','address']){const f=$('saleForm')?.elements.namedItem(k);if(f)f.value=k==='country'?'Myanmar':'';}}captureDraft();return;}
+ if(target.name==='date_of_birth'&&target.value&&$('saleForm')){const d=new Date(target.value+'T12:00:00');const week=d.getDay();const f=$('saleForm').elements.namedItem('weekday');if(f)f.value=WEEKDAYS[week];}
+});
+document.addEventListener('submit',async event=>{const form=event.target;if(!(form instanceof HTMLFormElement))return;event.preventDefault();
+ if(form.id==='loginForm')return withBusy(async()=>{if(!app.sb)throw new Error('Supabase ချိတ်ဆက်မှု မရှိသေးပါ။ index.html ၏ Config ကို ပြင်ပါ။');
+  $('loginError').classList.add('hidden');const f=formObj(form);const {error}=await app.sb.auth.signInWithPassword({email:String(f.email),password:String(f.password)});if(error)throw error;await authProfile();});
+ if(!ensureWritable())return;
+ if(form.id==='saleForm')return withBusy(async()=>{captureDraft();const d=app.saleDraft;const seen=new Set();const items=[];
+  for(const i of d.items){const quantity=num(i.quantity),p=app.data.products.find(x=>x.id===i.product_id&&x.active);if(!p)throw new Error('ပစ္စည်းကို ရွေးပါ။');if(!validInt(quantity,1))throw new Error('အရေအတွက် မမှန်ပါ။');if(seen.has(p.id))throw new Error('တူညီသော ပစ္စည်း နှစ်ကြိမ်ထည့်ထားသည်။');seen.add(p.id);items.push({product_id:p.id,quantity});}
+  if(!String(d.name).trim()||!String(d.phone).trim())throw new Error('Customer အမည်နှင့် ဖုန်းနံပါတ် ဖြည့်ပါ။');
+  const amount=num(d.payment_amount);const total=items.reduce((n,x)=>n+Number(app.data.products.find(p=>p.id===x.product_id).price)*x.quantity,0);
+  if(!validInt(amount)||amount>total)throw new Error('ငွေပေးသွင်းပမာဏ မမှန်ပါ။');
+  const customer={...d,id:d.customer_id||null};delete customer.items;delete customer.payment_amount;delete customer.payment_method;delete customer.payment_ref;delete customer.note;delete customer.customer_id;
+  const newId=await rpc('lawki_create_sale',{p_customer:customer,p_items:items,p_payment_amount:amount,p_payment_method:d.payment_method,p_payment_ref:d.payment_ref||'',p_note:d.note||''});
+  app.saleDraft=null;app.route='vouchers';await fetchData();toast('ဘောက်ချာသိမ်းပြီးပါပြီ။');voucherDetail(newId);
+ });
+ if(form.id==='productForm')return withBusy(async()=>{if(!roleAdmin())throw new Error('Admin only');const f=formObj(form),price=num(f.price),stock=num(f.stock_add);if(!validInt(price)||!validInt(stock))throw new Error('ဈေးနှုန်း / အဝင် Stock မမှန်ပါ။');
+  await rpc('lawki_save_product',{p_id:f.id||null,p_sku:f.sku,p_name:f.name,p_category:f.category||'',p_price:price,p_stock_add:stock,p_active:f.active==='true'});closeModal();await fetchData();toast('ပစ္စည်းစာရင်း သိမ်းပြီးပါပြီ။');});
+ if(form.id==='paymentForm')return withBusy(async()=>{const f=formObj(form),amount=num(f.amount);if(!validInt(amount,1))throw new Error('ငွေတန်ဖိုး မမှန်ပါ။');await rpc('lawki_add_payment',{p_sale_id:f.sale_id,p_amount:amount,p_method:f.method,p_reference:f.reference||''});closeModal();await fetchData();toast('ငွေထပ်သွင်းပြီးပါပြီ။');voucherDetail(f.sale_id);});
+ if(form.id==='locationForm')return withBusy(async()=>{const f=formObj(form);if(!f.name.trim()||!f.country.trim())throw new Error('နိုင်ငံနှင့် မြို့/မြို့နယ် အမည်လိုပါသည်။');const {error}=await app.sb.from('locations').insert({kind:f.kind,country:f.country.trim(),city:f.kind==='city'?'':f.city.trim(),name:f.name.trim()});if(error)throw error;await fetchData();toast('နေရာအသစ် သိမ်းပြီးပါပြီ။');});
+ if(form.id==='settingsForm')return withBusy(async()=>{if(!roleAdmin())throw new Error('Admin only');const f=formObj(form);const input={shop_name:f.shop_name,shop_phone:f.shop_phone,shop_address:f.shop_address,owner_name:f.owner_name,paper_size:f.paper_size,receipt_note:f.receipt_note,updated_at:new Date().toISOString()};
+  if(app.signatureChanged)input.signature=$('signatureCanvas').toDataURL('image/png');const {error}=await app.sb.from('shop_settings').update(input).eq('id',1);if(error)throw error;await fetchData();toast('ဆိုင် Setting သိမ်းပြီးပါပြီ။');});
+ if(form.id==='staffForm')return withBusy(async()=>{if(!roleAdmin())throw new Error('Admin only');const f=formObj(form);if(String(f.password).length<10)throw new Error('Password အနည်းဆုံး 10 လုံးလိုအပ်သည်။');
+  const {data,error}=await app.sb.functions.invoke('manage-staff',{body:{action:'create',full_name:f.full_name,email:f.email,password:f.password}});if(error){let message=error.message;if(error.context?.json){const v=await error.context.json().catch(()=>null);message=v?.error||message;}throw new Error(message+' (Edge Function deploy လုပ်ထားရန်လိုသည်)');}if(data?.error)throw new Error(data.error);
+  form.reset();await fetchData();toast('ဝန်ထမ်းအကောင့်အသစ် ဖန်တီးပြီးပါပြီ။');});
+ if(form.id==='passwordForm')return withBusy(async()=>{const f=formObj(form);if(String(f.password).length<10)throw new Error('Password အနည်းဆုံး 10 လုံး');const {error}=await app.sb.auth.updateUser({password:f.password});if(error)throw error;form.reset();toast('Password ပြောင်းပြီးပါပြီ။');});
+});
+window.addEventListener('online',()=>{renderShell();fetchData(true);});
+window.addEventListener('offline',()=>{if(app.profile)renderShell();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&app.profile&&!app.demo)fetchData(true);});
+// ---------- Start ----------
+async function start(){try{
+  const cfg=window.LAWKI_CONFIG||{};const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(String(cfg.SUPABASE_URL||''))&&/^(sb_publishable_|eyJ)/.test(String(cfg.SUPABASE_PUBLISHABLE_KEY||''));
+  if(!configured){showLogin();$('configHint').classList.remove('hidden');return;}
+  const {createClient}=await import('https://esm.sh/@supabase/supabase-js@2');
+  app.sb=createClient(cfg.SUPABASE_URL.replace(/\/$/,''),cfg.SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  app.sb.auth.onAuthStateChange((event)=>{if(event==='SIGNED_OUT'){stopRealtime();if(!app.demo)showLogin();}});
+  await authProfile();
+ }catch(err){console.error('Launch error:',err);showLogin();$('loginError').classList.remove('hidden');$('loginError').textContent='App စတင်၍မရပါ: '+errorText(err);}}
+start();
+
+</script>
+</body>
+</html>
